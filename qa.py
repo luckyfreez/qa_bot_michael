@@ -2,7 +2,7 @@
 import faiss
 from langchain import PromptTemplate
 from langchain.chat_models import ChatOpenAI
-from langchain.chains import RetrievalQAWithSourcesChain
+from langchain.chains import RetrievalQAWithSourcesChain, RetrievalQA
 import pickle
 import argparse
 
@@ -29,8 +29,7 @@ template = """你是西美公司的内部wiki机器人，以下文档是从公�
 QA_CHAIN_PROMPT = PromptTemplate.from_template(template)
 
 store.index = index
-chain = RetrievalQAWithSourcesChain.from_chain_type(llm=ChatOpenAI(temperature=0), retriever=store.as_retriever(),
-                                                    chain_type_kwargs={"prompt": QA_CHAIN_PROMPT})
-result = chain({"question": args.question})
-print(f"Answer: {result['answer']}")
-print(f"Sources: {result['sources']}")
+chain = RetrievalQA.from_chain_type(llm=ChatOpenAI(temperature=0), retriever=store.as_retriever(),
+                                    chain_type_kwargs={"prompt": QA_CHAIN_PROMPT})
+result = chain({"query": args.question})
+print(f"Answer: {result['result']}")
