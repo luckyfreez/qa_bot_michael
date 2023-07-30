@@ -17,8 +17,8 @@ chain = VectorDBQAWithSourcesChain.from_llm(llm=OpenAI(temperature=0), vectorsto
 
 
 # From here down is all the StreamLit UI.
-st.set_page_config(page_title="Blendle Notion QA Bot", page_icon=":robot:")
-st.header("Blendle Notion QA Bot")
+st.set_page_config(page_title="内部AI机器人", page_icon=":robot:")
+st.header("西美内部AI机器人")
 
 if "generated" not in st.session_state:
     st.session_state["generated"] = []
@@ -28,7 +28,7 @@ if "past" not in st.session_state:
 
 
 def get_text():
-    input_text = st.text_input("You: ", "Hello, how are you?", key="input")
+    input_text = st.text_input("You: ", "你好，我是西美AI机器人，我目前可以讲解创建交货单的流程，请问您对创建交货单有什么问题吗？", key="input")
     return input_text
 
 
