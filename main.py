@@ -28,7 +28,7 @@ if "past" not in st.session_state:
 
 
 def get_text():
-    input_text = st.text_input("You: ", "你好，我是西美AI机器人，我目前可以讲解创建交货单的流程，请问您对创建交货单有什么问题吗？", key="input")
+    input_text = st.text_input("You: ", "你好，请问如何创建交货单？", key="input")
     return input_text
 
 
